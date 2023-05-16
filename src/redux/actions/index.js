@@ -17,7 +17,7 @@ export const getCurrencies = () => async (dispatch) => {
   const fetchAPI = await fetch('https://economia.awesomeapi.com.br/json/all');
   const data = await fetchAPI.json();
   // transforma o data em um array de strings, selecionando somente as keys do objeto, que são as siglas das moedas.
-  const dataStringfy = Object.keys(data)
+  const dataStringfy = Object.keys(data);
   // faço um filtro no meu data array para remover a opção USDT
   const filterData = dataStringfy.filter((currency) => currency !== 'USDT');
   // o retorno é o dispatch, que recebe a actioncreator como param, que, por sua vez, recebe o meu array filtrado.
