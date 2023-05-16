@@ -1,11 +1,13 @@
 export const ADD_EMAIL = 'ADD_EMAIL';
 export const GET_CURRENCIES = 'GET_CURRENCIES';
+export const ADD_EXPENSES = 'ADD_EXPENSES';
 
 export const addEmail = (payload) => ({
   type: ADD_EMAIL,
   payload, // shortcut para atribuição de valor, para não precisar ficar repetindo
 });
 
+// REQUISITO 3
 // essa action creator deve realizar a requisição para a api das moedas
 const getCurrenciesAction = (payload) => ({
   type: GET_CURRENCIES,
@@ -23,3 +25,9 @@ export const getCurrencies = () => async (dispatch) => {
   // o retorno é o dispatch, que recebe a actioncreator como param, que, por sua vez, recebe o meu array filtrado.
   return dispatch(getCurrenciesAction(filterData));
 };
+
+// REQUISITO 4
+export const addExpenses = (payload) => ({
+  type: ADD_EXPENSES,
+  payload,
+});

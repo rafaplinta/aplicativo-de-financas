@@ -1,4 +1,4 @@
-import { GET_CURRENCIES } from '../actions'; // importando minha action
+import { GET_CURRENCIES, ADD_EXPENSES } from '../actions'; // importando minha action
 
 const initialState = {
   currencies: [], // array de string
@@ -13,6 +13,11 @@ const wallet = (state = initialState, action) => {
   case GET_CURRENCIES:
     return {
       ...state, currencies: action.payload,
+    };
+  case ADD_EXPENSES:
+    return {
+      ...state,
+      expenses: [...state.expenses, action.payload],
     };
   default:
     return state;

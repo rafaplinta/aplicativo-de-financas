@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 class Header extends Component {
   render() {
-    const { email } = this.props; // email vem do estado global. Ela chega como props para mim atraǘes do mapStateToProps.
+    const { email } = this.props; // email vem do estado global. Ela chega como props para mim através do mapStateToProps.
     return (
       <header>
         <p data-testid="email-field">{ email }</p>
@@ -17,6 +17,7 @@ class Header extends Component {
 
 const mapStateToProps = (state) => ({
   email: state.user.email,
+  expenses: state.wallet.expenses,
 });
 
 Header.propTypes = {
