@@ -57,6 +57,7 @@ class WalletForm extends Component {
     }));
   };
 
+  // aqui é a função que chama a API
   exchangeRates = async () => {
     const fetchAPI = await fetch('https://economia.awesomeapi.com.br/json/all');
     const data = await fetchAPI.json();
