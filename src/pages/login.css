@@ -1,5 +1,6 @@
 .login-page {
   align-items: center;
+  background-color: rgb(231, 111, 81);
   display: flex;
   height: 100vh;
   justify-content: center;
@@ -7,18 +8,42 @@
 
 .login-container {
   align-items: center;
+  background-color: white;
+  border-radius: 10px;
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   height: 400px;
+  justify-content: center;
+  width: 290px;
 }
 
 .login-container input {
-  background-color: rgb (192, 192, 192);
+  background-color: #e6e5e5;
   border: none;
   border-radius: 8px;
   height: 24px;
-  margin: 3px;
+  margin-bottom: 3px;
+  margin-left: 8px;
   outline: none;
   text-align: center;
-  width: 180px;
+  width: 270px;
 }
+
+.login-container button {
+  background-color: rgb(231, 111, 81);
+  border: none;
+  border-radius: 8px;
+  color: aliceblue;
+  cursor: pointer;
+  height: 25px;
+  margin-bottom: 15px;
+  margin-left: 45px;
+  margin-top: 5px;
+  width: 200px;
+}
+
+.login-container button:disabled {
+  background-color: #e6e5e5;
+  color: rgb(231, 111, 81);
+}
+

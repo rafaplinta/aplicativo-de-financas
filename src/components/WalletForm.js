@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrencies, addExpenses, uptadeExpenses } from '../redux/actions';
 
+import '../pages/login.css';
+
 // Agradecimentos mais do que esepeciais ao colega e amigo Jhonatan 30B por me ajudar na a solucionar (e debugar), o exercício 9! Obrigada, Jhon!
 
 class WalletForm extends Component {
@@ -24,7 +26,7 @@ class WalletForm extends Component {
   shouldComponentUpdate(nextProps) {
     const { editor } = this.state;
     if (editor !== nextProps.editor) {
-      console.log('Estou aqui');
+      // console.log('Estou aqui');
       const { expense } = nextProps; // aqui estou desestruturando o meu param
       this.setState({
         value: expense.value,
@@ -101,6 +103,7 @@ class WalletForm extends Component {
             name="value"
             onChange={ this.inputChange }
             type="number"
+            className="value"
           />
         </label>
 
