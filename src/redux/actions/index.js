@@ -1,6 +1,7 @@
 export const ADD_EMAIL = 'ADD_EMAIL';
 export const GET_CURRENCIES = 'GET_CURRENCIES';
 export const ADD_EXPENSES = 'ADD_EXPENSES';
+export const DELETE_EXPENSES = 'DELETE_EXPENSES';
 
 export const addEmail = (payload) => ({
   type: ADD_EMAIL,
@@ -29,5 +30,11 @@ export const getCurrencies = () => async (dispatch) => {
 // REQUISITO 4
 export const addExpenses = (payload) => ({
   type: ADD_EXPENSES,
+  payload,
+});
+
+// REQUISITO 8
+export const deleteExpense = (payload) => ({
+  type: DELETE_EXPENSES,
   payload,
 });
