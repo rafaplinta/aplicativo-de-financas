@@ -2,6 +2,8 @@ export const ADD_EMAIL = 'ADD_EMAIL';
 export const GET_CURRENCIES = 'GET_CURRENCIES';
 export const ADD_EXPENSES = 'ADD_EXPENSES';
 export const DELETE_EXPENSES = 'DELETE_EXPENSES';
+export const EDIT_EXPENSES = 'EDIT_EXPENSES';
+export const UPDATE_EXPENSES = 'UPDATE_EXPENSES';
 
 export const addEmail = (payload) => ({
   type: ADD_EMAIL,
@@ -36,5 +38,16 @@ export const addExpenses = (payload) => ({
 // REQUISITO 8
 export const deleteExpense = (payload) => ({
   type: DELETE_EXPENSES,
+  payload,
+});
+
+// REQUISITO 9
+export const editExpenses = (payload) => ({
+  type: EDIT_EXPENSES,
+  payload,
+});
+
+export const uptadeExpenses = (payload) => ({
+  type: UPDATE_EXPENSES,
   payload,
 });

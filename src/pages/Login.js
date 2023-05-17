@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addEmail } from '../redux/actions';
 
+import './login.css';
+
 class Login extends React.Component {
   state = {
     password: '',
@@ -40,31 +42,34 @@ class Login extends React.Component {
   render() {
     const { password, isBtnDisable, email } = this.state;
     return (
-      <div>
-        <h1>Login</h1>
-        <div>
-          <input
-            type="text"
-            value={ email }
-            name="email"
-            data-testid="email-input"
-            placeholder="Digite seu e-mail"
-            onChange={ this.verifyInputs }
-          />
-          <input
-            type="text"
-            value={ password }
-            name="password"
-            data-testid="password-input"
-            placeholder="Digite sua senha"
-            onChange={ this.verifyInputs }
-          />
-          <button
-            disabled={ isBtnDisable }
-            onClick={ this.btnClick }
-          >
-            Entrar
-          </button>
+      <div className="login-page">
+        <div className="login-container">
+          <h1>TrybeWallet</h1>
+          <div>
+            <input
+              type="text"
+              value={ email }
+              name="email"
+              id="email"
+              data-testid="email-input"
+              placeholder="Digite seu e-mail"
+              onChange={ this.verifyInputs }
+            />
+            <input
+              type="text"
+              value={ password }
+              name="password"
+              data-testid="password-input"
+              placeholder="Digite sua senha"
+              onChange={ this.verifyInputs }
+            />
+            <button
+              disabled={ isBtnDisable }
+              onClick={ this.btnClick }
+            >
+              Entrar
+            </button>
+          </div>
         </div>
       </div>
     );

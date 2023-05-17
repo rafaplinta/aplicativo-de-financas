@@ -1,4 +1,5 @@
-import { GET_CURRENCIES, ADD_EXPENSES, DELETE_EXPENSES } from '../actions'; // importando minha action
+import { GET_CURRENCIES,
+  ADD_EXPENSES, DELETE_EXPENSES, EDIT_EXPENSES, UPDATE_EXPENSES } from '../actions'; // importando minha action
 
 const initialState = {
   currencies: [], // array de string
@@ -17,12 +18,29 @@ const wallet = (state = initialState, action) => {
   case ADD_EXPENSES:
     return {
       ...state,
-      expenses: [...state.expenses, action.payload],
+      expenses: [...state.expenses, { ...action.payload, id: state.expenses.length }],
     };
   case DELETE_EXPENSES:
     return {
       ...state,
       expenses: state.expenses.filter(({ id }) => id !== action.payload),
+    };
+  case EDIT_EXPENSES:
+    return {
+      ...state,
+      editor: true,
+      idToEdit: action.payload,
+    };
+  case UPDATE_EXPENSES:
+    return {
+      ...state,
+      editor: false,
+      idToEdit: 0,
+      expenses: state.expenses.map((expense) => {
+        if (expense.id === state.idToEdit) {
+          return { id: state.idToEdit, ...action.payload };
+        } return expense;
+      }),
     };
   default:
     return state;

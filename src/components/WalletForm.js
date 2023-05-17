@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getCurrencies, addExpenses } from '../redux/actions';
+import { getCurrencies, addExpenses, uptadeExpenses } from '../redux/actions';
+
+// Agradecimentos mais do que esepeciais ao colega e amigo Jhonatan 30B por me ajudar na a solucionar (e debugar), o exercício 9! Obrigada, Jhon!
 
 class WalletForm extends Component {
   // criando o estado local do componente para salvar
@@ -11,12 +13,30 @@ class WalletForm extends Component {
     currency: 'USD',
     method: 'Dinheiro',
     tag: 'Alimentação',
-    id: 0, // crio o estado Id para salvar o id de cada item dentro dele.
+    editor: false,
   };
 
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(getCurrencies());
+  }
+
+  shouldComponentUpdate(nextProps) {
+    const { editor } = this.state;
+    if (editor !== nextProps.editor) {
+      console.log('Estou aqui');
+      const { expense } = nextProps; // aqui estou desestruturando o meu param
+      this.setState({
+        value: expense.value,
+        description: expense.description,
+        currency: expense.currency,
+        method: expense.method,
+        tag: expense.tag,
+        editor: nextProps.editor,
+      });
+      return false;
+    }
+    return true;
   }
 
   // essa função é chamada dentro de cada item, no onChange.
@@ -32,10 +52,9 @@ class WalletForm extends Component {
   // Ao ser acionada, cria um objetão com todos os estados locais, chama o reducer addExpenses e seta o id de cada objetão adicionado. Salva tudo na chave EXPENSES do estado global.
   // essa função precisa ser async pois o estado exchengeRates aguarda o retorno da API.
   clickBtn = async () => {
-    const { dispatch } = this.props;
-    const { value, description, currency, method, tag, id } = this.state;
+    const { dispatch, editor } = this.props;
+    const { value, description, currency, method, tag } = this.state;
     const expenses = {
-      id,
       value,
       description,
       currency,
@@ -45,16 +64,20 @@ class WalletForm extends Component {
     };
 
     // aqui eu despacho o meu addExpenses que recebe meu objetão como parâmetro
-    dispatch(addExpenses(expenses));
+    if (editor) {
+      dispatch(uptadeExpenses(expenses));
+    } else {
+      dispatch(addExpenses(expenses));
+    }
 
-    this.setState((previousState) => ({
-      id: previousState.id + 1,
+    this.setState({
       value: '',
       description: '',
       currency: 'USD',
       method: 'Dinheiro',
       tag: 'Alimentação',
-    }));
+      editor: false,
+    });
   };
 
   // aqui é a função que chama a API
@@ -65,7 +88,7 @@ class WalletForm extends Component {
   };
 
   render() {
-    const { currencies } = this.props; // essa props vem do mapStateToProps
+    const { currencies, editor } = this.props; // essa props vem do mapStateToProps
     const { value, description, currency, method, tag } = this.state;
     return (
       <form>
@@ -77,6 +100,7 @@ class WalletForm extends Component {
             value={ value }
             name="value"
             onChange={ this.inputChange }
+            type="number"
           />
         </label>
 
@@ -141,7 +165,7 @@ class WalletForm extends Component {
           type="button"
           onClick={ this.clickBtn }
         >
-          Adicionar despesa
+          {editor ? 'Editar despesa' : 'Adicionar despesa'}
         </button>
       </form>
     );
@@ -150,15 +174,28 @@ class WalletForm extends Component {
 
 // O mapStateToProps retorna um objeto, tal qual as actions. Ele mapeia o estado global e transforma em props, para que possamos acessá-lo dentro de um componente.
 // Ele recebe como param o objeto do nosso estado global.
-const mapStateToProps = (globalState) => ({
-  currencies: globalState.wallet.currencies,
+const mapStateToProps = (globalState) => {
+  let expense = false;
+  if (globalState.wallet.editor) {
+    expense = globalState.wallet.expenses
+      .find(({ id }) => id === globalState.wallet.idToEdit);
+  }
+  return ({
+    currencies: globalState.wallet.currencies,
+    editor: globalState.wallet.editor,
+    expenses: globalState.wallet.expenses,
+    idToEdit: globalState.wallet.idToEdit,
+    expense,
   // crio uma chave (que pode conter qualquer nome, e acesso meu globalStarte, depois o estado que quero acessar dentro dele e, depois, a chave que quero dentro desse estado)
-});
+  });
+};
 
 WalletForm.propTypes = {
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
+  editor: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
-};
+  expense: PropTypes.shape({}),
+}.isRequired;
 
 // A mapStateToProps vem do connect.
 export default connect(mapStateToProps)(WalletForm);

@@ -1,0 +1,24 @@
+.login-page {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
+.login-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+}
+
+.login-container input {
+  background-color: rgb (192, 192, 192);
+  border: none;
+  border-radius: 8px;
+  height: 24px;
+  margin: 3px;
+  outline: none;
+  text-align: center;
+  width: 180px;
+}
