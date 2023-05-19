@@ -1,0 +1,57 @@
+.table {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.expenses-table {
+  color: black;
+  display: flex;
+  justify-content: space-around;
+  width: 95%;
+}
+
+td , th {
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+tbody tr:nth-child( odd ) {
+  background: rgb(244, 132, 95);
+}
+
+table button {
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  height: 30px;
+  margin-left: 2px;
+  margin-right: 2px;
+  padding: 5px;
+  width: 50px;
+}
+
+.delete-btn {
+  background-color: rgb(242, 92, 84);
+}
+
+.delete-btn:hover {
+  background-color: rgb(154, 3, 30);
+  color: whitesmoke;
+}
+
+.edit-btn {
+  background-color: white;
+  border: 1px solid rgb(244, 132, 95);
+}
+
+.edit-btn:hover {
+  background-color: rgb(247, 178, 103);
+  border: 1px solid rgb(247, 178, 103);
+}
+
+img {
+  margin-left: 50px;
+}

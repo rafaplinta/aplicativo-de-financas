@@ -12,8 +12,9 @@
   border-radius: 10px;
   display: flex;
   flex-flow: column wrap;
-  height: 400px;
-  justify-content: center;
+  height: 450px;
+  justify-content: flex-start;
+  padding: 5px;
   width: 290px;
 }
 
@@ -22,8 +23,8 @@
   border: none;
   border-radius: 8px;
   height: 24px;
-  margin-bottom: 3px;
-  margin-left: 8px;
+  margin-bottom: 5px;
+  margin-left: 5px;
   outline: none;
   text-align: center;
   width: 270px;
@@ -38,7 +39,7 @@
   height: 25px;
   margin-bottom: 15px;
   margin-left: 45px;
-  margin-top: 5px;
+  margin-top: 10px;
   width: 200px;
 }
 
@@ -47,3 +48,17 @@
   color: rgb(231, 111, 81);
 }
 
+.login-container img {
+  margin-left: 10px;
+  margin-top: 0;
+}
+
+.login-container h1 {
+  margin-bottom: 2px;
+  margin-top: 0;
+}
+
+.subtitle {
+  margin-bottom: 15px;
+  margin-top: 0;
+}

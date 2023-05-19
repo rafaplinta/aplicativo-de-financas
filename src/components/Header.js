@@ -17,11 +17,18 @@ class Header extends Component {
   render() {
     const { email } = this.props; // email vem do estado global. Ela chega como props para mim através do mapStateToProps.
     return (
-      <header>
-        <p data-testid="email-field">{ email }</p>
-        <p data-testid="total-field">{ this.total().toFixed(2) }</p>
+      <header className="header">
+        <h3 data-testid="email-field" className="total-email">{ email }</h3>
+        <p>Gastos totais</p>
+        <p
+          data-testid="total-field"
+          className="total-value"
+        >
+          { this.total().toFixed(2) }
+        </p>
         {/* O método toFixed() formata um número utilizando notação de ponto fixo. https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed */}
         <p data-testid="header-currency-field">BRL</p>
+        _____________
       </header>
     );
   }

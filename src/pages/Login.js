@@ -44,7 +44,13 @@ class Login extends React.Component {
     return (
       <div className="login-page">
         <div className="login-container">
-          <h1>TrybeWallet</h1>
+          <img
+            src="https://cdni.iconscout.com/illustration/premium/thumb/wallet-3378162-2810782.png"
+            alt="Imagem carteira"
+            width={ 220 }
+          />
+          <h1>Gastei</h1>
+          <p className="subtitle">Gerenciador pessoal de finanças</p>
           <div>
             <input
               type="text"
@@ -70,11 +76,6 @@ class Login extends React.Component {
               Entrar
             </button>
           </div>
-          <img
-            src="https://img.freepik.com/vetores-gratis/ilustracao-do-conceito-de-financas-pessoais_114360-5523.jpg?w=1380&t=st=1684343279~exp=1684343879~hmac=11ec784631bc5d7a92a0584107d204d9b0be597b2ab2c80790b65a68bb20981f"
-            alt="Imagem carteira"
-            width={ 290 }
-          />
         </div>
       </div>
     );

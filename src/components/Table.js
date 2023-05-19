@@ -58,13 +58,15 @@ class Table extends Component {
                   type="button"
                   data-testid="edit-btn"
                   onClick={ () => this.editExpenses(expense.id) }
+                  className="edit-btn"
                 >
                   Editar
                 </button>
-                /
+
                 <button
                   type="button"
                   data-testid="delete-btn"
+                  className="delete-btn"
                   onClick={ () => this.deleteExpenses(expense.id) }
                 >
                   Excluir
